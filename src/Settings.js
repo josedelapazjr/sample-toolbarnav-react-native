@@ -5,10 +5,19 @@ import {
   Text,
   View,
   ToolbarAndroid,
-  TouchableOpacity
+  TouchableOpacity,
+  BackAndroid
 } from 'react-native';
 
 var _navigator;
+
+BackAndroid.addEventListener('hardwareBackPress', () => {
+  if (_navigator && _navigator.getCurrentRoutes().length > 1) {
+    _navigator.pop();
+    return true;
+  }
+  return false;
+});
 
 export default class Settings extends Component {
 
